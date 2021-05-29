@@ -1,0 +1,15 @@
+server:
+    port: 8550
+---
+
+spring:
+    profiles: dev
+server:
+    port: 8551
+
+---
+
+spring:
+    profiles: prod
+server:
+    port: 8552
