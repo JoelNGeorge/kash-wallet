@@ -1,5 +1,14 @@
 server:
     port: 8550
+    servlet:
+        context-path: /kash
+
+management:
+    endpoints:
+        web:
+            base-path: /status
+            path-mapping:
+                health: healthcheck
 ---
 
 spring:
