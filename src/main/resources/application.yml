@@ -1,24 +1,41 @@
+spring:
+    application:
+        name: kash-wallet
+
+
 server:
-    port: 8550
+    port: 8600
     servlet:
-        context-path: /kash
+        context-path: /wallet
 
 management:
     endpoints:
         web:
             base-path: /status
-            path-mapping:
-                health: healthcheck
+            exposure:                include: health,info    endpoint:
+        info:
+            enabled: true
+ 
+#---------------- Eureka Client Config --------------                          
+eureka:
+  client:
+#    register-with-eureka: true
+#    fetch-registry: true
+    service-url:      defaultZone : http://localhost:8500/eureka  instance:    prefer-ip-address: false
+    hostname: localhost
+    statusPageUrlPath: ${server.servlet.context-path}/status/info
+    healthCheckUrlPath: ${server.servlet.context-path}/status/health
+       
 ---
 
 spring:
     profiles: dev
 server:
-    port: 8551
+    port: 8601
 
 ---
 
 spring:
     profiles: prod
 server:
-    port: 8552
+    port: 8602

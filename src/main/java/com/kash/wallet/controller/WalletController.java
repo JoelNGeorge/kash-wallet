@@ -1,6 +1,5 @@
 package com.kash.wallet.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,12 +17,12 @@ public class WalletController {
 	@Autowired
 	WalletService walletService;
 
-	@GetMapping(value = "/wallets", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = "/get", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Wallet> getWallets() {
 		return walletService.findAllWallets();
 	}
 
-	@GetMapping(value = "/wallets/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = "/get/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Wallet getWallet(@PathVariable String id) {
 		return walletService.findWalletById(id);
 	}
